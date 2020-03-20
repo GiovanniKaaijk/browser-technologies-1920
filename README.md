@@ -1,5 +1,8 @@
 # Browser Technologies @cmda-minor-web 1920
 
+### Feedback
+Ik weet niet echt waar ik feedback op zou willen, ik ben wel lekker bezig dus volgens mij komt alles goed.
+
 A progressive enhancement form about the minor Web Development. The form should save your information so that it is filled in when you return to the web page.
 
 ## Design without Javascript
