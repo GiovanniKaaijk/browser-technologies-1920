@@ -1,0 +1,14 @@
+<%- include('./partials/head.ejs') %>
+<body>
+    <div class="container">
+        <div class="intro">
+            <h1>Enquete Web Development</h1>
+            <p>Dit is een enquete over de minor Web Development. Graag willen wij jouw mening over de vakken binnen deze minor</p>
+            <p>Jouw enquete code: <%- hash %></p>
+            <form action="/startEnquete" method="POST">
+                <input name="hash" id="hash" type="hidden" value="<%- hash %>">
+                <button type="submit">Begin met de enquete</button>
+            </form>
+        </div>
+    </div>
+<%- include('./partials/footer.ejs') %>

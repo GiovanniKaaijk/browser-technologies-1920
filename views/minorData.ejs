@@ -1,0 +1,44 @@
+<%- include('./partials/head.ejs') %>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1>Enquete Web Development</h1>
+        </div>
+        <div class="userdata minordata">
+            <p>Wat vond je van de minor webdevelopment?</p>
+            <form action="/register-minor-data" method="POST">
+                <div>
+                    <label for="">Welk cijfer geef je deze minor?
+                        <input name="points" type="range" min="0" max="10" value="<%if(user.data.minordata !== undefined){%><%-user.data.minordata.points%><%}%>">
+                    </label>
+                </div>
+                <div class="radio">
+                    <p>Wat was jouw favoriete vak?</p>
+                        <div>
+                            <input name="favorite" id="pwa" type="radio" value="Progressive web apps">
+                            <label for="pwa"><div></div>Progressive web apps</label>
+                        </div>
+                        <div>
+                            <input name="favorite" id="bt" type="radio" value="Browser technologies">
+                            <label for="bt"><div></div>Browser technologies</label>
+                        </div>
+                        <div>
+                            <input name="favorite" id="wafs" type="radio" value="Web app from scratch">
+                            <label for="pwa"><div></div>Web app from scratch</label>
+                        </div>
+                        <div>
+                            <input name="favorite" id="css" type="radio" value="Css to the resque">
+                            <label for="css"><div></div>Progressive web apps</label>
+                        </div>
+                        <div>
+                            <input name="favorite" id="oba" type="radio" value="Project 1 oba">
+                            <label for="oba"><div></div>Project 1</label>
+                        </div>
+                </div>
+                
+                <button type="submit">Volgende</button>
+            </form>
+        </div>
+       
+    </div>
+<%- include('./partials/footer.ejs') %>

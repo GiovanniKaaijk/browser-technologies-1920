@@ -1,0 +1,25 @@
+<%- include('./partials/head.ejs') %>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1>Enquete Web Development</h1>
+        </div>
+        <div class="userdata">
+            <form action="/register-user-data" method="POST">
+                <div>
+                    <label for="">Naam
+                        <input name="username" type="text" value="<%if(user !== null){%><%-user.data.userdata.username%><%}%>">
+                    </label>
+                </div>
+                <div>
+                    <label for="">Studentnummer
+                        <input name="studentnummer" type="text" value="<%if(user !== null){%><%-user.data.userdata.studentnummer%><%}%>">
+                    </label>
+                </div>
+                
+                <button type="submit">Volgende</button>
+            </form>
+        </div>
+       
+    </div>
+<%- include('./partials/footer.ejs') %>
