@@ -190,14 +190,14 @@ form .radio.js input:not(:first-of-type) {
     margin-left: auto;
 }
 
-.range.js input {
+.range.js input, .time.js input {
     -webkit-appearance: none;
     height: 5px;
     border: 0;
     background-color: var(--lightGrey);
 }
 
-.range.js input::-webkit-slider-thumb {
+.range.js input::-webkit-slider-thumb, .time.js input::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 25px;
     height: 25px;
@@ -221,26 +221,6 @@ form .radio.js input:not(:first-of-type) {
     margin-top: 30px;
 }
 
-
-.thumb {
-    display: none;
-}
-
-.range.js .thumb {
-    margin: 0;
-    display: unset;
-    width: 40px;
-    height: 40px;
-    background-color: var(--green);
-    position: absolute;
-    top: -12px;
-    left: 0;
-    border-radius: 1.5em;
-    border: 3px solid #fff;
-    box-shadow: 0px 0px 6px rgba(0,0,0,.20);
-    box-sizing: border-box;
-}
-
 .slider-wrapper span {
     position: absolute;
     top: -5px;
@@ -253,3 +233,172 @@ form .radio.js input:not(:first-of-type) {
 }
 
 
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    .study input[type='checkbox'] {
+      --shadow-inner: rgba(18, 22, 33, .1);
+      height: 25px;
+      outline: none;
+      position: relative;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border: 0;
+      cursor: pointer;
+      background: var(--lightGrey);
+      -webkit-transition: background .3s ease, border-color .3s ease;
+      transition: background .3s ease, border-color .3s ease;
+    }
+    .study input[type='checkbox']:after {
+      content: '';
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      
+      -webkit-transition: opacity .2s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+      transition: opacity .2s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+      transition: transform .3s ease, opacity .2s ease, filter .3s ease;
+      transition: transform .3s ease, opacity .2s ease, filter .3s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+    }
+    .study input[type='checkbox']:checked {
+      background: var(--green);
+    }
+    .study input[type='checkbox']:checked:after {
+      -webkit-filter: drop-shadow(0 1px 2px var(--shadow-inner));
+              filter: drop-shadow(0 1px 2px var(--shadow-inner));
+      -webkit-transition: opacity 0.3s ease, -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+      transition: opacity 0.3s ease, -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2), -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+    }
+    
+    
+    .study input[type='checkbox'].switch {
+      width: 55px;
+      border-radius: 11px;
+    }
+    .study input[type='checkbox'].switch:after {
+      left: 4px;
+      top: 3.5px;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+    }
+    .study input[type='checkbox'].switch:checked:after {
+      -webkit-transform: translateX(28px);
+              transform: translateX(28px);
+    }
+  }
+
+.study input[type='checkbox']:focus {
+    outline: none;
+}
+
+.study label {
+    display: block;
+    width: 100%;
+}
+
+.study div {
+    border-bottom: 1px solid var(--lightGrey);
+    padding-bottom: 15px;
+}
+
+@supports not (display: flex) {
+  .study input {
+    margin-left: auto;
+    float: right;
+  }
+  .study div {
+    padding-bottom: 15px;
+}
+  
+}
+
+@supports (display: flex) {
+    .study div {
+        padding-bottom: 12px;
+    }
+    .study label {
+        display: flex;
+        line-height: 28px;
+    }
+
+    .study input[type='checkbox'] {
+        margin-left: auto;
+    }
+}
+
+button[type='submit'] {
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
+
+.range .slider-wrapper span {
+    transition: color .3s, top .3s;
+}
+
+.range .slider-wrapper input:active ~ span {
+    top: 25px;
+    color: var(--grey);
+}
+
+@supports (--css: variables) {
+	.time input[type="range"].multirange {
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+        vertical-align: top;
+        width: 100%;
+	}
+
+	.time input[type="range"].multirange.original {
+		position: absolute;
+	}
+
+    .time input[type="range"].multirange.original::-webkit-slider-thumb {
+        position: relative;
+        z-index: 2;
+    }
+
+    .time input[type="range"].multirange.original::-moz-range-thumb {
+        transform: scale(1); /* FF doesn't apply position it seems */
+        z-index: 1;
+    }
+
+    .time input[type="range"].multirange::-moz-range-track {
+        border-color: transparent; /* needed to switch FF to "styleable" control */
+    }
+
+	.time input[type="range"].multirange.ghost {
+		position: relative;
+		background: var(--track-background);
+		--track-background: linear-gradient(to right,
+				transparent var(--low), var(--range-color) 0,
+				var(--range-color) var(--high), transparent 0
+			) no-repeat 0 45% / 100% 40%;
+		--range-color: var(--green);
+	}
+
+    .time input[type="range"].multirange.ghost::-webkit-slider-runnable-track {
+        background: var(--track-background);
+    }
+
+    .time input[type="range"].multirange.ghost::-moz-range-track {
+        background: var(--track-background);
+    }
+
+}
+
+.hidden {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}

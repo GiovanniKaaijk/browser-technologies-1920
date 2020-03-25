@@ -39,7 +39,7 @@ async function checkHash (req, res) {
 
 async function updateUser(req, res) {
     const hash = req.session.user.hash
-    console.log(hash)
+    console.log(hash, req.body)
     
     try {
         const db = client.db('users')

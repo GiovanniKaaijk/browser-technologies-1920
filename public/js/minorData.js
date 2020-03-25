@@ -1,5 +1,6 @@
 document.querySelector('.radio').classList.add('js')
 document.querySelector('.range').classList.add('js')
+document.querySelector('.time').classList.add('js')
 let prev = null
 
 document.querySelectorAll('.radio input').forEach(input => {

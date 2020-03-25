@@ -23,25 +23,57 @@
                 <div class="radio">
                     <p>Wat was jouw favoriete vak?</p>
                         <div>
-                            <input name="favorite" id="pwa" type="radio" value="Progressive web apps" <%if(user.minordata.favorite === 'Progressive web apps'){%>checked="checked"<%}%>>
+                            <input name="favorite" id="pwa" type="radio" value="Progressive web apps"<%if(user.minordata) { %> <%if(user.minordata.favorite === 'Progressive web apps'){%>checked="checked"<%}}%>>
                             <label for="pwa"><div></div>Progressive web apps</label>
                         </div>
                         <div>
-                            <input name="favorite" id="bt" type="radio" value="Browser technologies" <%if(user.minordata.favorite === 'Browser technologies'){%>checked="checked"<%}%>>
+                            <input name="favorite" id="bt" type="radio" value="Browser technologies"<%if(user.minordata) { %> <%if(user.minordata.favorite === 'Browser technologies'){%>checked="checked"<%}}%>>
                             <label for="bt"><div></div>Browser technologies</label>
                         </div>
                         <div>
-                            <input name="favorite" id="wafs" type="radio" value="Web app from scratch" <%if(user.minordata.favorite === 'Web app from scratch'){%>checked="checked"<%}%>>
+                            <input name="favorite" id="wafs" type="radio" value="Web app from scratch"<%if(user.minordata) { %> <%if(user.minordata.favorite === 'Web app from scratch'){%>checked="checked"<%}}%>>
                             <label for="wafs"><div></div>Web app from scratch</label>
                         </div>
                         <div>
-                            <input name="favorite" id="css" type="radio" value="Css to the resque" <%if(user.minordata.favorite === 'Css to the resque'){%>checked="checked"<%}%>>
+                            <input name="favorite" id="css" type="radio" value="Css to the resque"<%if(user.minordata) { %> <%if(user.minordata.favorite === 'Css to the resque'){%>checked="checked"<%}}%>>
                             <label for="css"><div></div>Progressive web apps</label>
                         </div>
                         <div>
-                            <input name="favorite" id="oba" type="radio" value="Project 1 oba" <%if(user.minordata.favorite === 'Project 1 oba'){%>checked="checked"<%}%>>
+                            <input name="favorite" id="oba" type="radio" value="Project 1 oba"<%if(user.minordata) { %> <%if(user.minordata.favorite === 'Project 1 oba'){%>checked="checked"<%}}%>>
                             <label for="oba"><div></div>Project 1</label>
                         </div>
+                </div>
+                <div class="time">
+                    <p>Hoeveel tijd was je gemiddeld per week kwijt?</p>
+                    <div class="slider-wrapper">
+                        <label class="hidden" for="avarageTime">Aantal uur gemiddeld kwijt:</label>
+                        <div>
+                            <input name="minTime" class="multirange original" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.minordata !== undefined){%><%-user.minordata.minTime%><%} else {%>10<% } %>">
+                            <input name="maxTime" class="multirange ghost" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.minordata !== undefined){%><%-user.minordata.maxTime%><%} else {%>30<% } %>">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="study">
+                    <p>Welke vooropleiding(en) heb je hiervoor gedaan?</p>
+                    <div>
+                        <label for="CMD">
+                                CMD
+                            <input name="cmd" type="checkbox" class="switch" <%if(user.minordata) { if(user.minordata.cmd){%>checked="checked"<%}}%>>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="ICT">
+                            ICT
+                            <input name="ict" type="checkbox" class="switch" <%if(user.minordata) { if(user.minordata.ict){%>checked="checked"<%}}%>>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="Anders">
+                            Anders
+                            <input name="anders" type="checkbox" class="switch" <%if(user.minordata) { if(user.minordata.anders){%>checked="checked"<%}}%>>
+                        </label>
+                    </div>
                 </div>
                 
                 <button type="submit">Volgende</button>
