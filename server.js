@@ -57,9 +57,7 @@ async function updateUser(req, res) {
             data[item] = req.body[item]
         })
 
-        await db.collection('user').updateOne({hash: hash}, {$set: {data: {
-            [dbHolder]: data
-        }}}, {upsert: true})
+        await db.collection('user').updateOne({hash: hash}, {$set: {[dbHolder]: data}}, {upsert: true})
 
         const hashData = await db.collection('user').findOne({hash: hash})
         req.session.user = hashData
@@ -71,6 +69,7 @@ async function updateUser(req, res) {
         res.redirect('/minorData')
     }
 }
+
 
 app.use(session({
 	resave: false,
@@ -115,6 +114,7 @@ app.use('/public', express.static('public'))
             user: user
         })
     })
+    .post('/register-minor-data', updateUser)
 
 const port = 9090
 app.listen(port, () => console.log(`Server is gestart op poort: ${port}`))

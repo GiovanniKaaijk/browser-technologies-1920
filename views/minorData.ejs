@@ -7,31 +7,39 @@
         <div class="userdata minordata">
             <p>Wat vond je van de minor webdevelopment?</p>
             <form action="/register-minor-data" method="POST">
-                <div>
+                <div class="range">
                     <label for="">Welk cijfer geef je deze minor?
-                        <input name="points" type="range" min="0" max="10" value="<%if(user.data.minordata !== undefined){%><%-user.data.minordata.points%><%}%>">
+                        <div class="slider-wrapper">
+                            <input name="points" type="range" min="1" max="10" value="<%if(user.minordata !== undefined){%><%-user.minordata.points%><%}%>">
+                            <span class="value"></span>
+                        </div>
+                        
+                        <div class="values">
+                            <p>1</p>
+                            <p>10</p>
+                        </div>
                     </label>
                 </div>
                 <div class="radio">
                     <p>Wat was jouw favoriete vak?</p>
                         <div>
-                            <input name="favorite" id="pwa" type="radio" value="Progressive web apps">
+                            <input name="favorite" id="pwa" type="radio" value="Progressive web apps" <%if(user.minordata.favorite === 'Progressive web apps'){%>checked="checked"<%}%>>
                             <label for="pwa"><div></div>Progressive web apps</label>
                         </div>
                         <div>
-                            <input name="favorite" id="bt" type="radio" value="Browser technologies">
+                            <input name="favorite" id="bt" type="radio" value="Browser technologies" <%if(user.minordata.favorite === 'Browser technologies'){%>checked="checked"<%}%>>
                             <label for="bt"><div></div>Browser technologies</label>
                         </div>
                         <div>
-                            <input name="favorite" id="wafs" type="radio" value="Web app from scratch">
-                            <label for="pwa"><div></div>Web app from scratch</label>
+                            <input name="favorite" id="wafs" type="radio" value="Web app from scratch" <%if(user.minordata.favorite === 'Web app from scratch'){%>checked="checked"<%}%>>
+                            <label for="wafs"><div></div>Web app from scratch</label>
                         </div>
                         <div>
-                            <input name="favorite" id="css" type="radio" value="Css to the resque">
+                            <input name="favorite" id="css" type="radio" value="Css to the resque" <%if(user.minordata.favorite === 'Css to the resque'){%>checked="checked"<%}%>>
                             <label for="css"><div></div>Progressive web apps</label>
                         </div>
                         <div>
-                            <input name="favorite" id="oba" type="radio" value="Project 1 oba">
+                            <input name="favorite" id="oba" type="radio" value="Project 1 oba" <%if(user.minordata.favorite === 'Project 1 oba'){%>checked="checked"<%}%>>
                             <label for="oba"><div></div>Project 1</label>
                         </div>
                 </div>
@@ -41,4 +49,5 @@
         </div>
        
     </div>
+    <script src="/public/js/minorData.js"></script>
 <%- include('./partials/footer.ejs') %>

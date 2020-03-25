@@ -8,12 +8,12 @@
             <form action="/register-user-data" method="POST">
                 <div>
                     <label for="">Naam
-                        <input name="username" type="text" value="<%if(user !== null){%><%-user.data.userdata.username%><%}%>">
+                        <input name="username" type="text" value="<%if(user.userdata !== undefined){%><%-user.userdata.username%><%}%>">
                     </label>
                 </div>
                 <div>
                     <label for="">Studentnummer
-                        <input name="studentnummer" type="text" value="<%if(user !== null){%><%-user.data.userdata.studentnummer%><%}%>">
+                        <input name="studentnummer" type="text" value="<%if(user.userdata !== undefined){%><%-user.userdata.studentnummer%><%}%>">
                     </label>
                 </div>
                 

@@ -20,6 +20,9 @@
     --blue: #0BAFF2;
     --yellow: #F4E600;
     --grey: #4C4E57;
+    --darkBorder: #979797;
+    --lightGrey: #D8D8D8;
+    --offsetLeft: 2.5%;
 }
 
 body {
@@ -82,7 +85,7 @@ form div {
 form input {
     display: block;
     border-radius: 1.5em;
-    border: 1px solid #979797;
+    border: 1px solid var(--darkBorder);
     padding: 5px 10px;
     margin-top: 7px;
 }
@@ -91,10 +94,11 @@ form .radio.js input:not(:first-of-type) {
     display: unset;
 }
 
-.radio.js label {
+.radio label {
     position: relative;
     margin-top: 3px;
     margin-left: 5px;
+    padding-left: 5px;
 }
 
 .radio.js input {
@@ -103,18 +107,149 @@ form .radio.js input:not(:first-of-type) {
 }
 
 .radio.js label div {
-    border: 1px solid #222021;
-    width: 20px;
-    height: 20px;
+    border: 1px solid var(--darkBorder);
+    width: 22px;
+    height: 22px;
     margin-right: 10px;
     position: absolute;
     vertical-align: top;
     top: -22px;
     left: -25px;
     border-radius: 4px;
+    box-sizing: border-box;
   }
 
 .radio.js > div {
     display: flex;
 }
+
+.radio.js .checked div {
+    border: 0;
+    background-color: var(--green);
+}
+
+.radio.js .checked div::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    position: absolute;
+    top: 10px;
+    left: 2px;
+    background-color: #fff;
+    border-radius: 1.5em;
+    transform: rotate(45deg);
+}
+
+.radio.js .checked div::after {
+    content: '';
+    width: 18px;
+    height: 2px;
+    position: absolute;
+    top: 10px;
+    left: 2px;
+    background-color: #fff;
+    border-radius: 100px;
+    transform: rotate(-45deg);
+}
+
+.radio label {
+    font-family: 'museoBold', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.radio {
+    display: grid;
+    margin-top: 0;
+    grid-template-columns: 1fr 1fr;
+}
+
+.radio p {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
   
+.range input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.range .values p {
+    display: inline;
+    margin-top: 0;
+    font-family: 'museoBold', Arial, Helvetica, sans-serif;
+}
+
+.range .values {
+    display: inline-flex;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.range .values p:last-of-type {
+    margin-left: auto;
+}
+
+.range.js input {
+    -webkit-appearance: none;
+    height: 5px;
+    border: 0;
+    background-color: var(--lightGrey);
+}
+
+.range.js input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background-color: var(--green);
+    border-radius: 1.5em;
+    box-shadow: 0px 0px 6px rgba(0,0,0,.20);
+    transition: all 0.5s ease;
+    border: 3px solid #fff;
+}
+
+.range.js .values {
+    display: none;
+}
+
+.range.js .slider-wrapper {
+    margin-bottom: 30px;
+}
+
+.slider-wrapper {
+    position: relative;
+    margin-top: 30px;
+}
+
+
+.thumb {
+    display: none;
+}
+
+.range.js .thumb {
+    margin: 0;
+    display: unset;
+    width: 40px;
+    height: 40px;
+    background-color: var(--green);
+    position: absolute;
+    top: -12px;
+    left: 0;
+    border-radius: 1.5em;
+    border: 3px solid #fff;
+    box-shadow: 0px 0px 6px rgba(0,0,0,.20);
+    box-sizing: border-box;
+}
+
+.slider-wrapper span {
+    position: absolute;
+    top: -5px;
+    left: var(--offsetLeft);
+    color: #fff;
+    font-family: 'museoBolder', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    width: 15px;
+    pointer-events: none;
+}
+
+
