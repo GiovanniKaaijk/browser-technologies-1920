@@ -55,3 +55,52 @@ function calculateLeft() {
 }
 
 calculateLeft()
+
+const original = document.querySelector('.multirange.original')
+const ghost = document.querySelector('.multirange.ghost')
+
+
+
+function calculateGradient(min, max) {
+    let bottom = 0
+    let top = 0
+    if(original.value > ghost.value && this.classList.contains('original')) {
+        ghost.value = original.value
+        bottom = original.value
+        min = original.value
+    } else if (ghost.value < original.value) {
+        original.value = ghost.value
+        top = ghost.value
+        max = ghost.value
+    }
+
+
+    let width = window.getComputedStyle(slider, null).getPropertyValue('width').split('p')
+    width = parseInt(width[0])
+    const step = width/40
+
+    if(min && max || bottom !== 0 || top !== 0) {
+        let positionLow = original.value * step
+        let positionHigh = ghost.value * step
+
+        document.body.style.setProperty(`--low`, positionLow + 'px')
+        document.body.style.setProperty(`--high`, positionHigh + 'px')
+    } else {
+        let toggle;
+        if(this.classList.contains('original')) {
+            toggle = 'low'
+        } else {
+            toggle = 'high'
+        }
+
+        const value = this.value
+        
+        let position = value * step
+        document.body.style.setProperty(`--${toggle}`, position + 'px')
+    }
+}
+
+original.addEventListener('input', calculateGradient)
+ghost.addEventListener('input', calculateGradient)
+
+calculateGradient(original.value, ghost.value)

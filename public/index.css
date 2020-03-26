@@ -23,6 +23,8 @@
     --darkBorder: #979797;
     --lightGrey: #D8D8D8;
     --offsetLeft: 2.5%;
+    --low: 0%;
+    --high: 0%;
 }
 
 body {
@@ -377,12 +379,12 @@ input:focus {
     }
 
 	.time input[type="range"].multirange.ghost {
-		position: relative;
-		background: var(--track-background);
-		--track-background: linear-gradient(to right,
-				transparent var(--low), var(--range-color) 0,
-				var(--range-color) var(--high), transparent 0
-			) no-repeat 0 45% / 100% 40%;
+        position: relative;
+        background: var(--lightGrey);
+		background: linear-gradient(to right,
+        transparent var(--low), var(--green) var(--low),
+        var(--green) var(--high), transparent 0
+    );
 		--range-color: var(--green);
 	}
 
@@ -401,4 +403,87 @@ input:focus {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
+}
+
+.time.js input::-webkit-slider-thumb {
+    background-image: url(/public/images/unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+.page-shrimper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.page-shrimper::before, .page-shrimper::after {
+    content: '';
+    
+    position: absolute;
+    width: 100vw;
+    height: 0vh;
+    z-index: 10;
+    pointer-events: unset;
+    background-color: var(--green);
+    transition: all .5s;
+}
+.page-shrimper::before {
+    top: 0%;
+    left: 0;
+}
+.page-shrimper::after {
+    bottom: 0%;
+    left: 0;
+}
+.page-shrimper.animation::before, .page-shrimper.animation::after {
+    height: 50vh;
+}
+
+.icon-popup {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 50px);
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+
+.icon-popup.show {
+    z-index: 11;
+    visibility: unset;
+    opacity: 1;
+    pointer-events: unset;
+    animation: icon 3s ease-in-out infinite;
+}
+
+@keyframes icon {
+    from {
+        width: 100px;
+        height: 100px;
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    50% {
+        width: 80px;
+        height: 80px;
+    }
+    to {
+        width: 100px;
+        height: 100px;
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }

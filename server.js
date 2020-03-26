@@ -11,6 +11,7 @@ const uri = process.env.MONGO_URI
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 async function checkHash (req, res) { 
+
     const hash = req.body.hash
     
     let userData
@@ -32,8 +33,8 @@ async function checkHash (req, res) {
     } catch(e) { 
         console.error(e)
     } finally {
-        
-        res.redirect('/userData')
+        res.json({success: true, user: req.session.user})
+        // res.redirect('/userData')
     }
 }
 
@@ -44,20 +45,20 @@ async function updateUser(req, res) {
     try {
         const db = client.db('users')
         
-        let dbHolder = ''
-        if(req.url === '/register-user-data') {
-            dbHolder = 'userdata'
-        }
-        if(req.url === '/register-minor-data') {
-            dbHolder = 'minordata'
-        }
+        // let dbHolder = ''
+        // if(req.url === '/register-user-data') {
+        //     dbHolder = 'userdata'
+        // }
+        // if(req.url === '/register-minor-data') {
+        //     dbHolder = 'minordata'
+        // }
 
-        let data = {}
-        Object.keys(req.body).forEach(item => {
-            data[item] = req.body[item]
-        })
+        // let data = {}
+        // Object.keys(req.body).forEach(item => {
+        //     data[item] = req.body[item]
+        // })
 
-        await db.collection('user').updateOne({hash: hash}, {$set: {[dbHolder]: data}}, {upsert: true})
+        await db.collection('user').updateOne({hash: hash}, {$set: {[req.body.type]: req.body.data}}, {upsert: true})
 
         const hashData = await db.collection('user').findOne({hash: hash})
         req.session.user = hashData
@@ -65,8 +66,8 @@ async function updateUser(req, res) {
     } catch(e) { 
         console.error(e)
     } finally {
-        
-        res.redirect('/minorData')
+        res.json({success: true, user: req.session.user})
+        //res.redirect('/minorData')
     }
 }
 
