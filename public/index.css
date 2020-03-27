@@ -1,0 +1,489 @@
+@font-face {
+    font-family: museoBolder;
+    src: url(./fonts/MuseoSans_700.otf);
+}
+@font-face {
+    font-family: museoBold;
+    src: url(./fonts/MuseoSans_500.otf);
+}
+@font-face {
+    font-family: museoRegular;
+    src: url(./fonts/MuseoSans_300.otf);
+}
+@font-face {
+    font-family: museoLight;
+    src: url(./fonts/MuseoSans-100.otf);
+}
+
+:root {
+    --green: #51C0AB;
+    --blue: #0BAFF2;
+    --yellow: #F4E600;
+    --grey: #4C4E57;
+    --darkBorder: #979797;
+    --lightGrey: #D8D8D8;
+    --offsetLeft: 2.5%;
+    --low: 0%;
+    --high: 0%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+p, span, a, div, label, input {
+    font-family: 'museoLight',Helvetica, Arial, sans-serif;
+    color: var(--grey);
+}
+
+h1, h2, h3, h4, h5, h6, button {
+    font-family: 'museoBolder', Arial, Helvetica, sans-serif;
+    color: var(--grey);
+}
+
+.container {
+    margin: 0 5vw;
+}
+
+.intro {
+    min-height: 100vh;
+    display: flex;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 25px;
+    text-align: center;
+}
+
+.intro h1 {
+    margin-top: 30vh;
+}
+
+.intro p {
+    margin-top: 0px;
+}
+
+
+form button {
+    border-radius: 1.5em;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    color: #fff;
+    background-color: var(--green);
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 60px;
+}
+
+form div {
+    margin-top: 20px;
+}
+
+form input {
+    display: block;
+    border-radius: 1.5em;
+    border: 1px solid var(--darkBorder);
+    padding: 5px 10px;
+    margin-top: 7px;
+}
+
+form .radio.js input:not(:first-of-type) {
+    display: unset;
+}
+
+.radio label {
+    position: relative;
+    margin-top: 3px;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+.radio.js input {
+    opacity: 0;
+    pointer-events: 0;
+}
+
+.radio.js label div {
+    border: 1px solid var(--darkBorder);
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    position: absolute;
+    vertical-align: top;
+    top: -22px;
+    left: -25px;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+.radio.js > div {
+    display: flex;
+}
+
+.radio.js .checked div {
+    border: 0;
+    background-color: var(--green);
+}
+
+.radio.js .checked div::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    position: absolute;
+    top: 10px;
+    left: 2px;
+    background-color: #fff;
+    border-radius: 1.5em;
+    transform: rotate(45deg);
+}
+
+.radio.js .checked div::after {
+    content: '';
+    width: 18px;
+    height: 2px;
+    position: absolute;
+    top: 10px;
+    left: 2px;
+    background-color: #fff;
+    border-radius: 100px;
+    transform: rotate(-45deg);
+}
+
+.radio label {
+    font-family: 'museoBold', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.radio {
+    display: grid;
+    margin-top: 0;
+    grid-template-columns: 1fr 1fr;
+}
+
+.radio p {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+  
+.range input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.range .values p {
+    display: inline;
+    margin-top: 0;
+    font-family: 'museoBold', Arial, Helvetica, sans-serif;
+}
+
+.range .values {
+    display: inline-flex;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.range .values p:last-of-type {
+    margin-left: auto;
+}
+
+.range.js input, .time.js input {
+    -webkit-appearance: none;
+    height: 5px;
+    border: 0;
+    background-color: var(--lightGrey);
+}
+
+.range.js input::-webkit-slider-thumb, .time.js input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background-color: var(--green);
+    border-radius: 1.5em;
+    box-shadow: 0px 0px 6px rgba(0,0,0,.20);
+    transition: all 0.5s ease;
+    border: 3px solid #fff;
+}
+
+.range.js .values {
+    display: none;
+}
+
+.range.js .slider-wrapper {
+    margin-bottom: 30px;
+}
+
+.slider-wrapper {
+    position: relative;
+    margin-top: 30px;
+}
+
+.slider-wrapper span {
+    position: absolute;
+    top: -5px;
+    left: var(--offsetLeft);
+    color: #fff;
+    font-family: 'museoBolder', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    width: 15px;
+    pointer-events: none;
+}
+
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    .study input[type='checkbox'] {
+      --shadow-inner: rgba(18, 22, 33, .1);
+      height: 25px;
+      outline: none;
+      position: relative;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border: 0;
+      cursor: pointer;
+      background: var(--lightGrey);
+      -webkit-transition: background .3s ease, border-color .3s ease;
+      transition: background .3s ease, border-color .3s ease;
+    }
+    .study input[type='checkbox']:after {
+      content: '';
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      
+      -webkit-transition: opacity .2s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+      transition: opacity .2s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+      transition: transform .3s ease, opacity .2s ease, filter .3s ease;
+      transition: transform .3s ease, opacity .2s ease, filter .3s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+    }
+    .study input[type='checkbox']:checked {
+      background: var(--green);
+    }
+    .study input[type='checkbox']:checked:after {
+      -webkit-filter: drop-shadow(0 1px 2px var(--shadow-inner));
+              filter: drop-shadow(0 1px 2px var(--shadow-inner));
+      -webkit-transition: opacity 0.3s ease, -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+      transition: opacity 0.3s ease, -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2), -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+    }
+    
+    
+    .study input[type='checkbox'].switch {
+      width: 55px;
+      border-radius: 11px;
+    }
+    .study input[type='checkbox'].switch:after {
+      left: 4px;
+      top: 3.5px;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+    }
+    .study input[type='checkbox'].switch:checked:after {
+      -webkit-transform: translateX(28px);
+              transform: translateX(28px);
+    }
+  }
+
+.study input[type='checkbox']:focus {
+    outline: none;
+}
+
+.study label {
+    display: block;
+    width: 100%;
+}
+
+.study div {
+    border-bottom: 1px solid var(--lightGrey);
+    padding-bottom: 15px;
+}
+
+@supports not (display: flex) {
+  .study input {
+    margin-left: auto;
+    float: right;
+  }
+  .study div {
+    padding-bottom: 15px;
+}
+  
+}
+
+@supports (display: flex) {
+    .study div {
+        padding-bottom: 12px;
+    }
+    .study label {
+        display: flex;
+        line-height: 28px;
+    }
+
+    .study input[type='checkbox'] {
+        margin-left: auto;
+    }
+}
+
+button[type='submit'] {
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
+
+.range .slider-wrapper span {
+    transition: color .3s, top .3s;
+}
+
+.range .slider-wrapper input:active ~ span {
+    top: 25px;
+    color: var(--grey);
+}
+
+@supports (--css: variables) {
+	.time input[type="range"].multirange {
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+        vertical-align: top;
+        width: 100%;
+	}
+
+	.time input[type="range"].multirange.original {
+		position: absolute;
+	}
+
+    .time input[type="range"].multirange.original::-webkit-slider-thumb {
+        position: relative;
+        z-index: 2;
+    }
+
+    .time input[type="range"].multirange.original::-moz-range-thumb {
+        transform: scale(1); /* FF doesn't apply position it seems */
+        z-index: 1;
+    }
+
+    .time input[type="range"].multirange::-moz-range-track {
+        border-color: transparent; /* needed to switch FF to "styleable" control */
+    }
+
+	.time input[type="range"].multirange.ghost {
+        position: relative;
+        background: var(--lightGrey);
+		background: linear-gradient(to right,
+        transparent var(--low), var(--green) var(--low),
+        var(--green) var(--high), transparent 0
+    );
+		--range-color: var(--green);
+	}
+
+    .time input[type="range"].multirange.ghost::-webkit-slider-runnable-track {
+        background: var(--track-background);
+    }
+
+    .time input[type="range"].multirange.ghost::-moz-range-track {
+        background: var(--track-background);
+    }
+
+}
+
+.hidden {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.time.js input::-webkit-slider-thumb {
+    background-image: url(/public/images/unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+.page-shrimper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.page-shrimper::before, .page-shrimper::after {
+    content: '';
+    
+    position: absolute;
+    width: 100vw;
+    height: 0vh;
+    z-index: 10;
+    pointer-events: unset;
+    background-color: var(--green);
+    transition: all .5s;
+}
+.page-shrimper::before {
+    top: 0%;
+    left: 0;
+}
+.page-shrimper::after {
+    bottom: 0%;
+    left: 0;
+}
+.page-shrimper.animation::before, .page-shrimper.animation::after {
+    height: 50vh;
+}
+
+.icon-popup {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 50px);
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+
+.icon-popup.show {
+    z-index: 11;
+    visibility: unset;
+    opacity: 1;
+    pointer-events: unset;
+    animation: icon 3s ease-in-out infinite;
+}
+
+@keyframes icon {
+    from {
+        width: 100px;
+        height: 100px;
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    50% {
+        width: 80px;
+        height: 80px;
+    }
+    to {
+        width: 100px;
+        height: 100px;
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
