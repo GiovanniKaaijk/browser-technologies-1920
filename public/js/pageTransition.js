@@ -1,4 +1,4 @@
-$('button[type="submit"').on('click', addUser);
+document.querySelector('button[type="submit"').addEventListener('click', addUser);
 
 let hash;
 const pageShrimper = document.querySelector('.page-shrimper')
@@ -38,14 +38,21 @@ function addUser(event) {
     console.log(data)
     pageShrimper.classList.add('animation')
     checkShrimpTime()
-    $.ajax(postUrl, {
-        type: 'POST',
-        data: {
-            'hash': hash,
-            'data': data,
-            'type': type
-        }
-    }).done(function(res) {
+    let jsonData = JSON.stringify({
+        data: data,
+        hash: hash,
+        type: type
+    })
+    console.log(jsonData)
+    fetch(postUrl, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: jsonData
+    }).then((res) => {
+      if(res.status === 200) {
         console.log(res)
         fetch(window.location.protocol + "//" + window.location.host + url)
             .then(res => res.text())
@@ -55,13 +62,17 @@ function addUser(event) {
                 newPageHtml = newPageHtml[1].split('</main>')
                 newPageHtml = newPageHtml[0]
                 // location.href = window.location.protocol + "//" + window.location.host + url
-                $('main').html(newPageHtml)
+                document.querySelector('main').innerHTML = newPageHtml
                 stopShrimpTime()
                 
                 
-                $('button[type="submit"').on('click', addUser);
+                document.querySelector('button[type="submit"').addEventListener('click', addUser);
             })
+      }
+    }).catch((err) => {
+      console.log(err)
     })
+
 };
 
 let timer = 0;
@@ -80,7 +91,7 @@ function checkShrimpTime() {
 function stopShrimpTime() {
     clearInterval(interval)
     if(timer > 1) {
-        // document.querySelector('.icon-popup').classList.remove('show')
+        document.querySelector('.icon-popup').classList.remove('show')
         setTimeout(() => {
             pageShrimper.classList.remove('animation')
         }, 300);

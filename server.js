@@ -11,7 +11,7 @@ const uri = process.env.MONGO_URI
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 async function checkHash (req, res) { 
-
+    console.log(req.body)
     const hash = req.body.hash
     
     let userData
@@ -33,6 +33,7 @@ async function checkHash (req, res) {
     } catch(e) { 
         console.error(e)
     } finally {
+        console.log(req.session.user)
         res.json({success: true, user: req.session.user})
         // res.redirect('/userData')
     }
@@ -45,18 +46,18 @@ async function updateUser(req, res) {
     try {
         const db = client.db('users')
         
-        // let dbHolder = ''
-        // if(req.url === '/register-user-data') {
-        //     dbHolder = 'userdata'
-        // }
-        // if(req.url === '/register-minor-data') {
-        //     dbHolder = 'minordata'
-        // }
+        let dbHolder = ''
+        if(req.url === '/register-user-data') {
+            dbHolder = 'userdata'
+        }
+        if(req.url === '/register-minor-data') {
+            dbHolder = 'minordata'
+        }
 
-        // let data = {}
-        // Object.keys(req.body).forEach(item => {
-        //     data[item] = req.body[item]
-        // })
+        let data = {}
+        Object.keys(req.body).forEach(item => {
+            data[item] = req.body[item]
+        })
 
         await db.collection('user').updateOne({hash: hash}, {$set: {[req.body.type]: req.body.data}}, {upsert: true})
 
@@ -80,6 +81,7 @@ app.use(session({
 
 app.use('/public', express.static('public'))
     .use(bodyParser.urlencoded({ extended: true }))
+    .use(bodyParser.json())
     .set("view engine", "ejs")
     .set("views", "views")
     .get('/', (req, res) => {

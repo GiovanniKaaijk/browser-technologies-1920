@@ -447,25 +447,30 @@ input:focus {
 .icon-popup {
     position: absolute;
     top: 50%;
-    left: calc(50% - 50px);
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
+    transform-origin: center;
     border-radius: 50%;
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
+    z-index: 11;
 }
 
 .icon-popup.show {
-    z-index: 11;
     visibility: unset;
     opacity: 1;
     pointer-events: unset;
-    animation: icon 3s ease-in-out infinite;
+    
 }
+
+.icon-popup img {
+    transition: all .3s;
+    border-radius: 50%;
+    animation: icon 1.5s ease-in-out infinite;
+}
+
 
 @keyframes icon {
     from {
