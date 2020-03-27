@@ -71,16 +71,16 @@ function checkShrimpTime() {
     timer = 0;
     interval = setInterval(() => {
         timer += 1
-        if(timer > 1) {
+        if(timer > 5) {
             document.querySelector('.icon-popup').classList.add('show')
         }
-    }, 1000);
+    }, 100);
 }
 
 function stopShrimpTime() {
     clearInterval(interval)
     if(timer > 1) {
-        document.querySelector('.icon-popup').classList.remove('show')
+        // document.querySelector('.icon-popup').classList.remove('show')
         setTimeout(() => {
             pageShrimper.classList.remove('animation')
         }, 300);
