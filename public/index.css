@@ -505,6 +505,7 @@ textarea {
     position: absolute;
     background-color: var(--green);
     transition: all 0.3s ease-in-out;
+    pointer-events: none;
 }
 
 .small-shrimper::before {
