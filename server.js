@@ -56,6 +56,9 @@ async function updateUser(req, res) {
         if(req.url === '/register-minor-data') {
             dbHolder = 'minordata'
         }
+        if(req.url === '/register-favorite-data') {
+            dbHolder = 'favoritedata'
+        }
 
         let data = {}
         Object.keys(req.body).forEach(item => {
@@ -72,9 +75,16 @@ async function updateUser(req, res) {
     } finally {
         if(req.body.javascript) {
             res.json({success: true, user: req.session.user})
-        } else {
+        }
+        if(req.url === '/register-user-data') {
             res.redirect('/minorData')
         }
+        if(req.url === '/register-minor-data') {
+            res.redirect('/favorite')
+        }
+        if(req.url === '/register-favorite-data') {
+            res.redirect(`/enquete/${hash}`)
+        } 
     }
 }
 
@@ -125,6 +135,12 @@ app.use('/public', express.static('public'))
             user: user
         })
     })
+    .post('/register-favorite-data', updateUser)
+    .get('/finish', (req, res) => {
+        res.redirect(`/enquete/${req.session.user.hash}`)
+    })
+
+    
 const port = process.env.PORT || 9090
 
 app.listen(process.env.PORT || 9090, () => console.log(`Server is gestart op poort: ${port}`))

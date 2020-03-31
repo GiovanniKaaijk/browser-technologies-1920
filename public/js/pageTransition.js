@@ -26,6 +26,9 @@ function addUser(event) {
     } else if (url === '/favorite') {
         postUrl = '/register-minor-data'
         type = 'minordata'
+    } else if (url === '/finish') {
+        postUrl = '/register-favorite-data'
+        type = 'favoritedata'
     }
 
     const inputs = document.querySelectorAll('input')

@@ -7,7 +7,7 @@
             <h1><%- user.minordata.favorite %></h1>
         </div>
         <div class="userdata favorite">
-            <form action="/register-minor-data" method="POST">
+            <form action="/register-favorite-data" method="POST">
                 <div class="range">
                     <label for="">Welk cijfer geef jij <%- user.minordata.favorite %>?
                         <div class="slider-wrapper">
@@ -41,7 +41,7 @@
                     <textarea name="struggles" id="struggles" cols="50" rows="8"></textarea>
                 </div>
                 
-                <button data-href="/favorite" type="submit">Versturen</button>
+                <button data-href="/finish" type="submit">Versturen</button>
             </form>
         </div>
        
