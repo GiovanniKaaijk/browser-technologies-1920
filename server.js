@@ -92,7 +92,7 @@ app.use('/public', express.static('public'))
     .set("views", "views")
     .get('/', (req, res) => {
         console.log(req.params)
-        res.render('404')
+        res.redirect(`/enquete/${Math.floor(Math.random() * 100000)}`)
     })
     .get('/enquete/:id', async (req, res) => {
         const hash = req.params.id
