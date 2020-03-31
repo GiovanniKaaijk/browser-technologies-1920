@@ -62,6 +62,7 @@ function addUser(event) {
             .then(res => res.text())
             .then(res => {
                 console.log(window.location.protocol + "//" + window.location.host + url)
+                console.log(res)
                 let newPageHtml = res.split('<main>')
                 newPageHtml = newPageHtml[1].split('</main>')
                 newPageHtml = newPageHtml[0]
