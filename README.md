@@ -91,6 +91,7 @@ On chrome, a step of the form looks like this:
 
 #### IE 11 
 While on IE 11, a lot of feature are not supported, so the page will look like this:
+
 <img src="https://user-images.githubusercontent.com/43671292/78024251-59da0c80-7358-11ea-8c3f-6b193151dd5b.png" width="200">
 
 
