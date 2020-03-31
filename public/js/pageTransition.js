@@ -45,7 +45,7 @@ function addUser(event) {
         data: data,
         hash: hash,
         type: type,
-        javascript: true
+        javascript: false
     })
     console.log(jsonData)
     fetch(postUrl, {
