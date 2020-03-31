@@ -133,6 +133,6 @@ app.use('/public', express.static('public'))
             user: user
         })
     })
+const port = process.env.PORT || 9090
 
-const port = 9090
 app.listen(port, () => console.log(`Server is gestart op poort: ${port}`))
