@@ -96,40 +96,32 @@ app.use('/public', express.static('public'))
     })
     .get('/enquete/:id', async (req, res) => {
         const hash = req.params.id
-        const url = req.protocol + '://' + req.get('host') + req.originalUrl
         res.render('index', {
-            hash: hash,
-            url: url
+            hash: hash
         })
     })
     .post('/startEnquete', checkHash)
     .get('/userData', (req, res) => {
         console.log(req.session.user)
-        const url = req.protocol + '://' + req.get('host') + req.originalUrl
         const user = req.session.user
         res.render('userData', {
             hash: req.session.user.hash,
-            url: url,
             user: user
         })
     })
     .post('/register-user-data', updateUser)
     .get('/minorData', (req, res) => {
-        const url = req.protocol + '://' + req.get('host') + req.originalUrl
         const user = req.session.user
         res.render('minorData', {
             hash: req.session.user.hash,
-            url: url,
             user: user
         })
     })
     .post('/register-minor-data', updateUser)
     .get('/favorite', (req, res) => {
-        const url = req.protocol + '://' + req.get('host') + req.originalUrl
         const user = req.session.user
         res.render('favorite', {
             hash: req.session.user.hash,
-            url: url,
             user: user
         })
     })
