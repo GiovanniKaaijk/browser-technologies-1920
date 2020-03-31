@@ -100,17 +100,20 @@ While on IE 11, a lot of feature are not supported, so the page will look like t
   > This is the layer that only contains HTML
 
   This layer does not have any CSS or JavaScript, but the core functionality is still available.
+  
     <img src="https://user-images.githubusercontent.com/43671292/78027523-ca375c80-735d-11ea-905a-6aa9905a54ac.png" width="200">
   
  ### Layer 2 (HTML and CSS)
   > This is layer contains CSS
 The webpage is now looking more presentable. Basic CSS is applied, but there are no fancy styles yet.
+
   <img src="https://user-images.githubusercontent.com/43671292/78027715-1a162380-735e-11ea-803b-21703e63c7cb.png" width="200">
   
  ### Layer 3 (HTML, CSS and JS)
   > This is the layer that contains Javascript.
 
   On this layer, there is a better user experience. Page transitions are included, so it feels more like an app. Also sliders will be displayed with more fancy styles. 
+  
   <img src="https://user-images.githubusercontent.com/43671292/78028151-d7088000-735e-11ea-83a4-2d9f822e89b6.png" width="200">
 
   
