@@ -34,12 +34,12 @@ body {
 
 p, span, a, div, label, input {
     font-family: 'museoLight',Helvetica, Arial, sans-serif;
-    color: var(--grey);
+    color: #4C4E57;
 }
 
 h1, h2, h3, h4, h5, h6, button {
     font-family: 'museoBolder', Arial, Helvetica, sans-serif;
-    color: var(--grey);
+    color: #4C4E57;
 }
 
 .container {
@@ -74,7 +74,7 @@ form button {
     padding: 10px 0;
     width: 100%;
     color: #fff;
-    background-color: var(--green);
+    background-color: #51C0AB;
     font-size: 14px;
     display: inline-block;
     margin-top: 60px;
@@ -87,7 +87,7 @@ form div {
 form input {
     display: block;
     border-radius: 1.5em;
-    border: 1px solid var(--darkBorder);
+    border: 1px solid #979797;
     padding: 5px 10px;
     margin-top: 7px;
 }
@@ -109,7 +109,7 @@ form .radio.js input:not(:first-of-type) {
 }
 
 .radio.js label div {
-    border: 1px solid var(--darkBorder);
+    border: 1px solid #979797;
     width: 22px;
     height: 22px;
     margin-right: 10px;
@@ -127,7 +127,7 @@ form .radio.js input:not(:first-of-type) {
 
 .radio.js .checked div {
     border: 0;
-    background-color: var(--green);
+    background-color: #51C0AB;
 }
 
 .radio.js .checked div::before {
@@ -196,14 +196,14 @@ form .radio.js input:not(:first-of-type) {
     -webkit-appearance: none;
     height: 5px;
     border: 0;
-    background-color: var(--lightGrey);
+    background-color: #D8D8D8;
 }
 
 .range.js input::-webkit-slider-thumb, .time.js input::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 25px;
     height: 25px;
-    background-color: var(--green);
+    background-color: #51C0AB;
     border-radius: 1.5em;
     box-shadow: 0px 0px 6px rgba(0,0,0,.20);
     transition: all 0.5s ease;
@@ -226,7 +226,7 @@ form .radio.js input:not(:first-of-type) {
 .slider-wrapper span {
     position: absolute;
     top: -5px;
-    left: var(--offsetLeft);
+    left: 2.5%;
     color: #fff;
     font-family: 'museoBolder', Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -248,7 +248,7 @@ form .radio.js input:not(:first-of-type) {
       box-shadow: none;
       border: 0;
       cursor: pointer;
-      background: var(--lightGrey);
+      background: #D8D8D8;
       -webkit-transition: background .3s ease, border-color .3s ease;
       transition: background .3s ease, border-color .3s ease;
     }
@@ -265,7 +265,7 @@ form .radio.js input:not(:first-of-type) {
       transition: transform .3s ease, opacity .2s ease, filter .3s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
     }
     .study input[type='checkbox']:checked {
-      background: var(--green);
+      background: #51C0AB;
     }
     .study input[type='checkbox']:checked:after {
       -webkit-filter: drop-shadow(0 1px 2px var(--shadow-inner));
@@ -305,7 +305,7 @@ form .radio.js input:not(:first-of-type) {
 }
 
 .study div {
-    border-bottom: 1px solid var(--lightGrey);
+    border-bottom: 1px solid #D8D8D8;
     padding-bottom: 15px;
 }
 
@@ -348,7 +348,7 @@ input:focus {
 
 .range .slider-wrapper input:active ~ span {
     top: 25px;
-    color: var(--grey);
+    color: #4C4E57;
 }
 
 @supports (--css: variables) {
@@ -380,12 +380,12 @@ input:focus {
 
 	.time input[type="range"].multirange.ghost {
         position: relative;
-        background: var(--lightGrey);
+        background: #D8D8D8;
 		background: linear-gradient(to right,
-        transparent var(--low), var(--green) var(--low),
-        var(--green) var(--high), transparent 0
+        transparent 0%, #51C0AB 0%,
+        #51C0AB 0%, transparent 0
     );
-		--range-color: var(--green);
+		--range-color: #51C0AB;
 	}
 
     .time input[type="range"].multirange.ghost::-webkit-slider-runnable-track {
@@ -429,7 +429,7 @@ input:focus {
     height: 0vh;
     z-index: 10;
     pointer-events: unset;
-    background-color: var(--green);
+    background-color: #51C0AB;
     transition: all .5s;
 }
 .page-shrimper::before {
@@ -495,7 +495,7 @@ input:focus {
 
 textarea {
     border-radius: 8px;
-    border: 1px solid var(--grey);
+    border: 1px solid #4C4E57;
 }
 
 .small-shrimper::before, .small-shrimper::after {
@@ -503,7 +503,7 @@ textarea {
     width: 0px;
     height: 1vh;
     position: absolute;
-    background-color: var(--green);
+    background-color: #51C0AB;
     transition: all 0.3s ease-in-out;
     pointer-events: none;
 }
@@ -545,7 +545,7 @@ input:focus {
 }
 
 body {
-    background-color: var(--green)
+    background-color: #51C0AB
 }
 
 h1 {
