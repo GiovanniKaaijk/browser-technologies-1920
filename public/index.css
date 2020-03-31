@@ -226,7 +226,7 @@ form .radio.js input:not(:first-of-type) {
 .slider-wrapper span {
     position: absolute;
     top: -5px;
-    left: 2.5%;
+    left: var(--offsetLeft);
     color: #fff;
     font-family: 'museoBolder', Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -382,8 +382,8 @@ input:focus {
         position: relative;
         background: #D8D8D8;
 		background: linear-gradient(to right,
-        transparent 0%, #51C0AB 0%,
-        #51C0AB 0%, transparent 0
+        transparent var(--low), var(--green) var(--low),
+        var(--green) var(--high), transparent 0
     );
 		--range-color: #51C0AB;
 	}
