@@ -1,0 +1,51 @@
+<%- include('./partials/head.ejs') %>
+<body>
+    <main>
+
+    <div class="container">
+        <div class="heading">
+            <h1><%- user.minordata.favorite %></h1>
+        </div>
+        <div class="userdata favorite">
+            <form action="/register-minor-data" method="POST">
+                <div class="range">
+                    <label for="">Welk cijfer geef jij <%- user.minordata.favorite %>?
+                        <div class="slider-wrapper">
+                            <input name="points" type="range" min="1" max="10" value="<%if(user.minordata !== undefined){%><%-user.minordata.points%><%}%>">
+                            <span class="value"></span>
+                        </div>
+                        
+                        <div class="values">
+                            <p>1</p>
+                            <p>10</p>
+                        </div>
+                    </label>
+                </div>
+                <div class="textfield">
+                    <p>Waar liep je tegen aan tijdens dit vak?</p>
+                    <textarea name="struggles" id="struggles" cols="50" rows="8"></textarea>
+                </div>
+                <div class="time">
+                    <p>Hoeveel tijd was je ongeveer kwijt aan dit vak?</p>
+                    <div class="slider-wrapper">
+                        <label class="hidden" for="avarageTime">Aantal uur gemiddeld kwijt:</label>
+                        <div>
+                            <input name="minTime" class="multirange original" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.minordata !== undefined){%><%-user.minordata.minTime%><%} else {%>10<% } %>">
+                            <input name="maxTime" class="multirange ghost" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.minordata !== undefined){%><%-user.minordata.maxTime%><%} else {%>30<% } %>">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="textfield">
+                    <p>Heb je nog opmerkingen over dit vak?</p>
+                    <textarea name="struggles" id="struggles" cols="50" rows="8"></textarea>
+                </div>
+                
+                <button data-href="/favorite" type="submit">Versturen</button>
+            </form>
+        </div>
+       
+    </div>
+    <script src="/public/js/favorite.js"></script>
+    </main>
+<%- include('./partials/footer.ejs') %>

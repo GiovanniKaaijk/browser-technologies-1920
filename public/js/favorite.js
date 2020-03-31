@@ -1,22 +1,6 @@
-let mainChecker = document.querySelector('.minordata')
-console.log(mainChecker)
-if(document.querySelector('.minordata') !== null) {
-
-document.querySelector('.radio').classList.add('js')
 document.querySelector('.range').classList.add('js')
 document.querySelector('.time').classList.add('js')
-let prev = null
 
-console.log('running minordata.js')
-
-document.querySelectorAll('.radio input').forEach(input => {
-    input.checked ? input.parentNode.classList.add('checked') : null
-    input.addEventListener('change', function() {
-        input.parentNode.classList.add('checked') 
-        prev ? prev.parentNode.classList.remove('checked')  : document.querySelector('.checked').classList.remove('checked')
-        prev = input
-    })
-});
 
 const slider = document.querySelector('.range input')
 const value = document.querySelector('.slider-wrapper .value')
@@ -110,5 +94,3 @@ original.addEventListener('input', calculateGradient)
 ghost.addEventListener('input', calculateGradient)
 
 calculateGradient(original.value, ghost.value)
-
-}

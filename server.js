@@ -34,8 +34,11 @@ async function checkHash (req, res) {
         console.error(e)
     } finally {
         console.log(req.session.user)
-        res.json({success: true, user: req.session.user})
-        // res.redirect('/userData')
+        if(req.body.javascript) {
+            res.json({success: true, user: req.session.user})
+        } else {
+            res.redirect('/userData')
+        }
     }
 }
 
@@ -67,8 +70,11 @@ async function updateUser(req, res) {
     } catch(e) { 
         console.error(e)
     } finally {
-        res.json({success: true, user: req.session.user})
-        //res.redirect('/minorData')
+        if(req.body.javascript) {
+            res.json({success: true, user: req.session.user})
+        } else {
+            res.redirect('/minorData')
+        }
     }
 }
 
@@ -118,6 +124,15 @@ app.use('/public', express.static('public'))
         })
     })
     .post('/register-minor-data', updateUser)
+    .get('/favorite', (req, res) => {
+        const url = req.protocol + '://' + req.get('host') + req.originalUrl
+        const user = req.session.user
+        res.render('favorite', {
+            hash: req.session.user.hash,
+            url: url,
+            user: user
+        })
+    })
 
 const port = 9090
 app.listen(port, () => console.log(`Server is gestart op poort: ${port}`))

@@ -441,7 +441,7 @@ input:focus {
     left: 0;
 }
 .page-shrimper.animation::before, .page-shrimper.animation::after {
-    height: 50vh;
+    height: 49.5vh;
 }
 
 .icon-popup {
@@ -491,4 +491,41 @@ input:focus {
         -o-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+textarea {
+    border-radius: 8px;
+    border: 1px solid var(--grey);
+}
+
+.small-shrimper::before, .small-shrimper::after {
+    content: '';
+    width: 0px;
+    height: 1vh;
+    position: absolute;
+    background-color: var(--green);
+    transition: all 0.3s ease-in-out;
+}
+
+.small-shrimper::before {
+    left: 0;
+}
+
+.small-shrimper::after {
+    right: 0;
+}
+
+.small-shrimper.show::before, .small-shrimper.show::after {
+    width: 50vw;
+}
+
+
+
+.small-shrimper {
+    transition: .3s;
+    height: 10px;
+    width: 100%;
+    top: 49.5%;
+    left: 0;
+    position: absolute;
 }

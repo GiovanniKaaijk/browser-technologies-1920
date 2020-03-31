@@ -2,6 +2,9 @@ document.querySelector('button[type="submit"').addEventListener('click', addUser
 
 let hash;
 const pageShrimper = document.querySelector('.page-shrimper')
+const smallShrimper = document.querySelector('.small-shrimper')
+const icon = document.querySelector('.icon-popup')
+
 let shrimpToggle = true
 
 function addUser(event) {
@@ -20,7 +23,7 @@ function addUser(event) {
     } else if (url === '/minorData') {
         postUrl = '/register-user-data'
         type = 'userdata'
-    } else if (url === '/minorData-2') {
+    } else if (url === '/favorite') {
         postUrl = '/register-minor-data'
         type = 'minordata'
     }
@@ -41,7 +44,8 @@ function addUser(event) {
     let jsonData = JSON.stringify({
         data: data,
         hash: hash,
-        type: type
+        type: type,
+        javascript: true
     })
     console.log(jsonData)
     fetch(postUrl, {
@@ -67,6 +71,8 @@ function addUser(event) {
                 
                 
                 document.querySelector('button[type="submit"').addEventListener('click', addUser);
+
+                nodeScriptReplace(document.querySelector("main"));
             })
       }
     }).catch((err) => {
@@ -83,21 +89,58 @@ function checkShrimpTime() {
     interval = setInterval(() => {
         timer += 1
         if(timer > 5) {
-            document.querySelector('.icon-popup').classList.add('show')
+            smallShrimper.classList.add('show')
+        }
+        if(timer > 10) {
+            icon.classList.add('show')
         }
     }, 100);
 }
 
 function stopShrimpTime() {
     clearInterval(interval)
-    if(timer > 1) {
-        document.querySelector('.icon-popup').classList.remove('show')
+    if(timer > 5 && timer < 10) {
+        smallShrimper.classList.remove('show')
         setTimeout(() => {
             pageShrimper.classList.remove('animation')
         }, 300);
        
+    } else if(timer > 10) {
+        icon.classList.remove('show')
+        setTimeout(() => {
+            smallShrimper.classList.remove('show')
+        }, 300);
+        setTimeout(() => {
+            pageShrimper.classList.remove('animation')
+        }, 600);
     } else {
         pageShrimper.classList.remove('animation')
     }
     
+}
+
+function nodeScriptReplace(node) {
+    if ( nodeScriptIs(node) === true ) {
+            node.parentNode.replaceChild( nodeScriptClone(node) , node );
+    }
+    else {
+            var i        = 0;
+            var children = node.childNodes;
+            while ( i < children.length ) {
+                    nodeScriptReplace( children[i++] );
+            }
+    }
+
+    return node;
+}
+function nodeScriptIs(node) {
+    return node.tagName === 'SCRIPT';
+}
+function nodeScriptClone(node){
+    var script  = document.createElement("script");
+    script.text = node.innerHTML;
+    for( var i = node.attributes.length-1; i >= 0; i-- ) {
+            script.setAttribute( node.attributes[i].name, node.attributes[i].value );
+    }
+    return script;
 }
