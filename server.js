@@ -65,7 +65,13 @@ async function updateUser(req, res) {
             data[item] = req.body[item]
         })
 
-        await db.collection('user').updateOne({hash: hash}, {$set: {[req.body.type]: req.body.data}}, {upsert: true})
+        if(req.body.type !== undefined) {
+            await db.collection('user').updateOne({hash: hash}, {$set: {[req.body.type]: req.body.data}}, {upsert: true})
+        } else {
+            await db.collection('user').updateOne({hash: hash}, {$set: {[dbHolder]: data}}, {upsert: true})
+        }
+
+        
 
         const hashData = await db.collection('user').findOne({hash: hash})
         req.session.user = hashData
@@ -130,6 +136,7 @@ app.use('/public', express.static('public'))
     .post('/register-minor-data', updateUser)
     .get('/favorite', (req, res) => {
         const user = req.session.user
+        console.log(user)
         res.render('favorite', {
             hash: req.session.user.hash,
             user: user

@@ -11,7 +11,7 @@
                 <div class="range">
                     <label for="">Welk cijfer geef jij <%- user.minordata.favorite %>?
                         <div class="slider-wrapper">
-                            <input name="points" type="range" min="1" max="10" value="<%if(user.minordata !== undefined){%><%-user.minordata.points%><%}%>">
+                            <input name="points" type="range" min="1" max="10" value="<%if(user.favoritedata !== undefined){%><%-user.favoritedata.points%><%}%>">
                             <span class="value"></span>
                         </div>
                         
@@ -23,22 +23,22 @@
                 </div>
                 <div class="textfield">
                     <p>Waar liep je tegen aan tijdens dit vak?</p>
-                    <textarea name="struggles" id="struggles" cols="50" rows="8"></textarea>
+                    <textarea name="struggles" id="struggles" cols="50" rows="8" placeholder="<%if(user.favoritedata !== undefined){%><%-user.favoritedata.struggles%><%}%>" value="<%if(user.favoritedata !== undefined){%><%-user.favoritedata.struggles%><%}%>"></textarea>
                 </div>
                 <div class="time">
                     <p>Hoeveel tijd was je ongeveer kwijt aan dit vak?</p>
                     <div class="slider-wrapper">
                         <label class="hidden" for="avarageTime">Aantal uur gemiddeld kwijt:</label>
                         <div>
-                            <input name="minTime" class="multirange original" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.minordata !== undefined){%><%-user.minordata.minTime%><%} else {%>10<% } %>">
-                            <input name="maxTime" class="multirange ghost" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.minordata !== undefined){%><%-user.minordata.maxTime%><%} else {%>30<% } %>">
+                            <input name="minTime" class="multirange original" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.favoritedata !== undefined){%><%-user.favoritedata.minTime%><%} else {%>10<% } %>">
+                            <input name="maxTime" class="multirange ghost" multiple id="avarageTime" type="range" min="0" max="40" value="<%if(user.favoritedata !== undefined){%><%-user.favoritedata.maxTime%><%} else {%>30<% } %>">
                         </div>
                         
                     </div>
                 </div>
                 <div class="textfield">
                     <p>Heb je nog opmerkingen over dit vak?</p>
-                    <textarea name="struggles" id="struggles" cols="50" rows="8"></textarea>
+                    <textarea name="opmerkingen" id="struggles" cols="50" rows="8" placeholder="<%if(user.favoritedata !== undefined){%><%-user.favoritedata.opmerkingen%><%}%>" value="<%if(user.favoritedata !== undefined){%><%-user.favoritedata.opmerkingen%><%}%>"></textarea>
                 </div>
                 
                 <button data-href="/finish" type="submit">Versturen</button>
